@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Awesome Test-Time Adaptation — Paper List</title>
+<meta name="description" content="A curated, task-organized reading list of Test-Time Adaptation (TTA) papers across image classification, segmentation, point cloud, graph, speech, NLP, LLM, time-series, tabular, documents and more." />
+<link rel="stylesheet" href="bootstrap.min.css">
+<style>
+  /* ── Cyber-Classical theme ──────────────────────────────────────────── */
+  :root{
+    --ink:#12152a; --ink2:#1e2442; --paper:#f4f1e8; --card:#fbfaf5;
+    --line:#e4ddca; --accent:#13b3a8; --accent2:#c2902f; --text:#22252f; --muted:#7b7666;
+  }
+  body{ background:var(--paper); color:var(--text);
+        font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif; }
+  .serif,h1,h2,h3,.h3,.h5,.h6,table.tbl thead th{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  }
+  /* header: dark ink with a neon classical rule */
+  .hero{ position:relative;
+         background:radial-gradient(circle at 18% 0%, #232a52 0%, transparent 55%),
+                    linear-gradient(135deg,#10132a 0%,#1b2140 100%);
+         border-bottom:2px solid transparent;
+         border-image:linear-gradient(90deg,var(--accent),var(--accent2)) 1; }
+  .gh-corner{ position:absolute; top:.9rem; right:1.1rem; z-index:2;
+    display:inline-flex; align-items:center; gap:.35rem; padding:.3rem .7rem;
+    font-size:.82rem; text-decoration:none; border-radius:.4rem;
+    color:#cfeae6; border:1px solid #46506f; background:rgba(255,255,255,.04); }
+  .gh-corner:hover{ background:#46506f; color:#fff; border-color:#6b76a0; }
+  .hero h1{ color:#efe7d0; letter-spacing:.05em; text-shadow:0 1px 0 rgba(0,0,0,.4); }
+  .hero-motto{ display:inline-block; font-style:italic; font-size:1.12rem; color:#e7dcc0;
+    letter-spacing:.015em; margin-bottom:.35rem; }
+  .hero p,.hero .text-secondary{ color:#b7b2c8 !important; }
+  .hero .mono{ color:#7fe3da; }
+  .meta-link{ color:#7fe3da; text-decoration:none; }
+  .meta-link:hover{ text-decoration:underline; color:#a6f0e8; }
+  .hero .btn-outline-secondary{ color:#cfeae6; border-color:#46506f; }
+  .hero .btn-outline-secondary:hover{ background:#46506f; color:#fff; }
+  /* tabs */
+  .nav-cc .nav-link{ cursor:pointer; color:#9aa; border:1px solid transparent; border-radius:.4rem;
+    font-family:"Iowan Old Style",Palatino,Georgia,serif; letter-spacing:.04em; padding:.3rem .9rem; }
+  .nav-cc .nav-link.active{ background:rgba(19,179,168,.14); color:#7fe3da; border-color:rgba(19,179,168,.5); }
+  /* cards / inputs */
+  .card{ background:var(--card); border:1px solid var(--line); box-shadow:0 1px 2px rgba(20,18,40,.04); }
+  /* table */
+  table.tbl{ font-size:.875rem; }
+  table.tbl thead th{ background:#ece4d0; color:#3b3650; font-size:.86rem; text-transform:uppercase;
+    letter-spacing:.07em; white-space:nowrap; border-bottom:1px solid var(--line); }
+  .tbl-wrap{ overflow-x:auto; }
+  /* pills as terminal-ish chips */
+  .pill{ font-size:.72rem; font-weight:600; padding:.16rem .55rem; border-radius:.35rem; display:inline-block;
+    line-height:1.3; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; border:1px solid rgba(0,0,0,.07); }
+  .pill-gray{ background:#eceadf; color:#5b5648; }
+  .pill-teal{ background:#cdeee9; color:#0c7a70; }
+  .pill-conf{ background:#dde8ff; color:#1b46c8; }
+  .pill-journal{ background:#d3f0dd; color:#0e7440; }
+  .pill-other{ background:#eceadf; color:#5a6470; }
+  .pill-oral{ background:#fbdede; color:#bb2d2d; }
+  .pill-spotlight{ background:#fbeec2; color:#8a6400; }
+  a.pill{ text-decoration:none; cursor:pointer; }
+  a.pill:hover{ filter:brightness(0.95); }
+  /* tag pills — on-theme: domain = accent teal, setting = accent2 gold */
+  .pill-domain{ background:#d3ebe8; color:#0b6d62; border-color:rgba(19,179,168,.28); cursor:pointer; }
+  .pill-setting{ background:#f1e3bc; color:#856016; border-color:rgba(194,144,47,.34); cursor:pointer; }
+  .pill-domain:hover,.pill-setting:hover{ filter:brightness(.97); }
+  /* selected = a deeper, saturated shade of the same family */
+  .pill-domain.on{ background:#108b81; color:#fff; border-color:#108b81; }
+  .pill-setting.on{ background:#b07f1f; color:#fff; border-color:#b07f1f; }
+  .tag-count{ opacity:.55; font-weight:400; }
+  .row-tags .pill{ font-size:.66rem; padding:.1rem .4rem; }
+  /* tag group labels in the filter palette */
+  .tag-grp{ font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:#8a8472; width:64px; display:inline-block; }
+  /* filter section sub-headings (Task / Search / Tags) */
+  .flt-label{ display:block; margin-bottom:.3rem; font-weight:700; font-size:.78rem;
+    letter-spacing:.07em; text-transform:uppercase; color:var(--ink2);
+    border-left:3px solid var(--accent); padding-left:.45rem; }
+  /* result/status row */
+  .status-row{ margin-top:.85rem; padding-top:.7rem; border-top:1px solid var(--line); }
+  #p-count{ font-weight:700; font-size:1rem; color:var(--ink2);
+    font-variant-numeric:tabular-nums; }
+  .mono{ font-variant-numeric:tabular-nums; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .paper-link{ font-weight:500; text-decoration:none; color:#0e7c73; }
+  .paper-link:hover{ text-decoration:underline; }
+  .lnk{ font-size:.78rem; text-decoration:none; white-space:nowrap; color:#1b46c8; }
+  .lnk:hover{ text-decoration:underline; }
+  .author-lnk{ color:#0e7c73; text-decoration:none; cursor:pointer; }
+  .author-lnk:hover{ text-decoration:underline; }
+  /* stats bars */
+  .bar-bg{ background:#e7e1d0; border-radius:.3rem; height:20px; overflow:hidden; }
+  .bar{ height:100%; border-radius:.3rem; background:linear-gradient(90deg,var(--accent),var(--accent2)); }
+  .stat-card{ background:var(--card); border:1px solid var(--line); border-radius:.5rem; }
+  .heat td{ text-align:center; }
+  .heat th{ vertical-align:bottom; }
+  .expand-link{ color:#0e7c73; text-decoration:none; font-weight:600; }
+  .expand-link:hover{ text-decoration:underline; }
+  /* About-page option sub-headings */
+  .subhead{ font-weight:700; color:var(--ink2); border-left:3px solid var(--accent);
+    padding-left:.5rem; margin-bottom:.4rem; }
+  .bib-overlay{ position:fixed; inset:0; background:rgba(10,12,25,.55); display:flex; align-items:center; justify-content:center; z-index:1080; }
+  .bib-modal{ background:var(--card); border:1px solid var(--line); border-radius:.5rem; padding:1rem 1.25rem; width:min(640px,92vw); box-shadow:0 12px 44px rgba(10,12,25,.4); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a id="repo-link" class="gh-corner" target="_blank" rel="noopener"
+     href="https://github.com/Test-Time-Learning/Awesome-Test-Time-Adaptation" aria-label="GitHub repository">
+    <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+    GitHub
+  </a>
+  <div class="container py-4 text-center">
+    <h1 id="site-title" class="fw-bold mb-1" style="font-size:2.6rem">Awesome Test-Time Adaptation</h1>
+    <p class="mb-2 mx-auto" style="max-width:880px">
+      <span id="site-motto" class="hero-motto">The world keeps changing, so should the model.</span><br>
+      <span id="site-def" class="text-secondary small"><strong>Test-Time Adaptation (TTA)</strong> lets a trained model adapt to
+      that shift at inference, learning on the fly from the unlabeled test data alone.</span>
+    </p>
+    <div class="d-flex justify-content-center align-items-center gap-2">
+      <span id="metaline" class="text-secondary small mono"></span>
+    </div>
+    <ul class="nav nav-cc justify-content-center gap-2 mt-3" id="tabs">
+      <li class="nav-item"><a class="nav-link active" data-tab="list">📄 Paper List</a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="stats">📊 Statistics</a></li>
+      <li class="nav-item"><a class="nav-link" data-tab="about">🗺️ About</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="container py-4">
+  <section id="tab-list">
+  <div class="card shadow-sm mb-3">
+    <div class="card-body">
+      <div class="row g-2 align-items-end">
+        <div class="col-12 col-md-4">
+          <label class="flt-label">Task</label>
+          <select id="p-task" class="form-select form-select-sm"></select>
+        </div>
+        <div class="col-12 col-md-8">
+          <label class="flt-label">Search</label>
+          <input id="p-q" type="text" class="form-control form-control-sm" placeholder="title, method, author, venue…">
+        </div>
+      </div>
+      <div class="mt-2">
+        <label class="flt-label">Tags</label>
+        <div id="p-tags-palette"></div>
+      </div>
+      <div class="d-flex align-items-center flex-wrap gap-2 status-row">
+        <span id="p-count"></span>
+        <span id="p-active"></span>
+        <button id="p-reset" class="btn btn-sm btn-outline-secondary ms-auto">↺ Reset filters</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="tbl-wrap">
+      <table class="table table-hover align-middle mb-0 tbl">
+        <thead>
+          <tr>
+            <th style="min-width:160px">#</th>
+            <th style="min-width:320px">Paper</th>
+            <th style="min-width:190px">Authors</th>
+            <th>Venue</th>
+            <th style="min-width:235px">Links</th>
+          </tr>
+        </thead>
+        <tbody id="p-body"></tbody>
+      </table>
+    </div>
+  </div>
+  </section>
+
+  <section id="tab-stats" class="d-none">
+    <div class="row g-3">
+      <div class="col-12 col-lg-6">
+        <div class="stat-card p-3 h-100">
+          <h2 class="h6 mb-3">📈 Papers per Year</h2>
+          <div id="stat-year"></div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="stat-card p-3 h-100">
+          <h2 class="h6 mb-3">🧩 Papers per Task <span class="text-secondary small">(Click to filter)</span></h2>
+          <div id="stat-task"></div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="stat-card p-3 h-100">
+          <h2 class="h6 mb-3">👤 Top Authors <span class="text-secondary small">(By published paper count, excl. arXiv; click to filter)</span></h2>
+          <div id="stat-authors"></div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="stat-card p-3 h-100">
+          <h2 class="h6 mb-3">🏷️ Top Tags <span class="text-secondary small">(Domain &amp; setting; click to filter)</span></h2>
+          <div id="stat-tags"></div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="stat-card p-3">
+          <h2 class="h6 mb-2">🏛️ Venue × Year <span class="text-secondary small">(Venues with ≥ 5 papers)</span></h2>
+          <div class="tbl-wrap">
+            <table class="table table-sm tbl heat mb-0">
+              <thead id="stat-vy-head"></thead>
+              <tbody id="stat-vy-body"></tbody>
+            </table>
+          </div>
+          <div id="stat-vy-more" class="mt-1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-about" class="d-none">
+    <div class="stat-card p-4 mb-3">
+      <h2 class="h5 mb-2">TTA Scope of This Page</h2>
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <div class="p-2 rounded" style="background:#e7f1ee;border:1px solid var(--line)">
+            <strong class="d-block mb-1" style="color:#0b6d62">✔ Included</strong>
+            <ul class="small mb-0 ps-3">
+              <li>Test-time training with self-supervision (TTT)</li>
+              <li>Entropy minimization / pseudo-labeling at test time (TENT-style)</li>
+              <li>BN-statistic adaptation, prompt tuning at test time</li>
+              <li>Online / continual / episodic / single-image TTA</li>
+              <li>Source-free adaptation done <em>at inference</em></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="p-2 rounded" style="background:#f3e9e4;border:1px solid var(--line)">
+            <strong class="d-block mb-1" style="color:#a23b2e">✘ Excluded</strong>
+            <ul class="small mb-0 ps-3">
+              <li>LLM <em>test-time scaling / reasoning</em> with no weight update (best-of-N, CoT)</li>
+              <li>Source-free DA requiring a separate <em>training phase</em> on the whole target set</li>
+              <li>Domain generalization (train-time only)</li>
+              <li>Test-time <em>augmentation</em> only (no model/statistic update)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-card p-4 mb-3">
+      <h2 class="h5 mb-1">Two-axis Taxonomy</h2>
+      <p class="text-secondary small mb-3">Every paper has one <strong>Task</strong> and any number of <strong>Tags</strong>.
+        The Task is the machine-learning problem it solves. The Tags say which domain it works in and which
+        adaptation setting it uses.</p>
+
+      <h3 class="h6 mb-2">Task <span class="text-secondary small">(The ML problem, single-select)</span></h3>
+      <div class="table-responsive mb-3">
+        <table class="table table-sm small mb-0">
+          <tbody>
+            <tr><td><span class="pill pill-gray">Classification</span></td><td>Predict a category: image, VLM, node, graph, audio, tabular, activity, or medical class (also open-set and face anti-spoofing).</td></tr>
+            <tr><td><span class="pill pill-gray">Segmentation</span></td><td>Dense per-pixel or per-point labeling.</td></tr>
+            <tr><td><span class="pill pill-gray">Detection</span></td><td>Object or region localization.</td></tr>
+            <tr><td><span class="pill pill-gray">Regression</span></td><td>Continuous targets such as depth, pose, geometry, time-series forecasting, and molecular properties.</td></tr>
+            <tr><td><span class="pill pill-gray">Restoration</span></td><td>Recover a clean signal: super-resolution, denoising, deblurring, dehazing, compression, point-cloud upsampling.</td></tr>
+            <tr><td><span class="pill pill-gray">Retrieval &amp; Ranking</span></td><td>Match or rank by similarity: cross-modal retrieval, person re-ID, recommendation.</td></tr>
+            <tr><td><span class="pill pill-gray">Sequence &amp; Language</span></td><td>Sequence and language tasks: ASR, OCR, language modeling, QA and reasoning, VQA, machine translation.</td></tr>
+            <tr><td><span class="pill pill-gray">Decision-Making</span></td><td>Sequential decision and control: RL, embodied agents, navigation.</td></tr>
+            <tr><td><span class="pill pill-gray">Theory</span></td><td>The main contribution is theoretical: learnability, provable guarantees, asymptotics.</td></tr>
+            <tr><td><span class="pill pill-gray">Benchmark / Survey</span></td><td>Benchmarks, empirical studies, and surveys.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h6 mb-2">Tags <span class="text-secondary small">(Domain &amp; setting, multi-select)</span></h3>
+      <p class="small mb-1"><span class="tag-grp" style="width:auto">Domain</span>
+        the modality or application area: <span class="pill pill-domain">Image</span>
+        <span class="pill pill-domain">Vision-Language</span> <span class="pill pill-domain">3D/Point-Cloud</span>
+        <span class="pill pill-domain">Graph</span> <span class="pill pill-domain">Video</span>
+        <span class="pill pill-domain">Speech</span> <span class="pill pill-domain">Audio</span>
+        <span class="pill pill-domain">Text/Document</span> <span class="pill pill-domain">Time-Series</span>
+        <span class="pill pill-domain">Tabular</span> <span class="pill pill-domain">Medical</span>
+        <span class="pill pill-domain">Remote-Sensing</span> <span class="pill pill-domain">EEG/Bio-signal</span>
+        <span class="pill pill-domain">Recommendation</span> <span class="pill pill-domain">Multimodal</span> …</p>
+      <p class="small mb-1"><span class="tag-grp" style="width:auto">Setting</span>
+        the adaptation <em>protocol</em> and any extra <em>challenge</em> beyond plain distribution shift.
+        Only the distinctive ones are tagged; the plain corruption and source-free case is the unmarked default.</p>
+      <p class="small mb-0" style="padding-left:0">
+        <span class="text-secondary" style="font-size:.7rem">Protocol:</span>
+        <span class="pill pill-setting">Online</span> <span class="pill pill-setting">Continual</span>
+        <span class="pill pill-setting">Single-image</span> <span class="pill pill-setting">Mixed/Non-i.i.d.</span>
+        <span class="pill pill-setting">Federated</span> <span class="pill pill-setting">Black-box</span>
+        <span class="pill pill-setting">Gradient-free</span>
+        &nbsp; <span class="text-secondary" style="font-size:.7rem">Challenge:</span>
+        <span class="pill pill-setting">Open-set</span> <span class="pill pill-setting">Label-Shift</span>
+        <span class="pill pill-setting">Adversarial</span></p>
+    </div>
+
+    <div class="stat-card p-4">
+      <h2 class="h5 mb-2">Contributing</h2>
+      <p class="mb-2 small">Spotted a missing paper or an error? Pull requests are welcome. There are two ways to add a paper.</p>
+
+      <h3 class="h6 subhead">Option A: with Claude Code (recommended)</h3>
+      <p class="small mb-2">The repo ships an
+        <a href="https://github.com/Test-Time-Learning/Awesome-Test-Time-Adaptation/tree/main/.claude/skills/add-paper" target="_blank" rel="noopener"><code>add-paper</code> skill</a>
+        for Claude Code. Open the repo in Claude Code and just say, for example,
+        <em>"add this paper: &lt;an arXiv link, a conference page, or simply the paper's title&gt;"</em>.
+        Given only a title, the skill searches for the paper itself. It then reads the abstract, decides the Task
+        and the Domain/Setting tags, writes the BibTeX, checks for duplicates, appends the entry to
+        <code>papers.json</code>, and regenerates <code>data.json</code> and <code>README.md</code>. You just review
+        the diff and open a PR.</p>
+
+      <h3 class="h6 subhead">Option B: by hand</h3>
+      <ol class="small mb-0">
+        <li>Append one object to <code>papers.json</code> with the fields
+          <code>full, title, authors, venue, task, tags, url, pdf, code, bibtex, presentation</code>.</li>
+        <li>Optionally run <code>python build.py</code> and <code>python readme.py</code> to preview locally.</li>
+        <li>Open a pull request that commits <strong>only <code>papers.json</code></strong>.
+          <code>data.json</code> and <code>README.md</code> are auto-generated and will be regenerated by the maintainer.</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="container text-center text-secondary small py-4 border-top">
+  Awesome Test-Time Adaptation · Page Designed by <a href="https://zhouz.dev" target="_blank" rel="noopener">Zhi Zhou</a>
+</footer>
+
+<div id="bib-overlay" class="bib-overlay" style="display:none">
+  <div class="bib-modal">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <strong id="bib-title" class="small"></strong>
+      <button id="bib-close" class="btn-close" aria-label="Close"></button>
+    </div>
+    <textarea id="bib-text" class="form-control mono" rows="9" readonly></textarea>
+    <div class="d-flex justify-content-end gap-2 mt-2">
+      <button id="bib-copy" class="btn btn-sm btn-primary">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const uniq = a => Array.from(new Set(a.filter(v => v!=null && v!==''))).sort();
+  const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const A = { papers: [], meta: {}, bib: {}, expand: {}, f: { task:'(all)', q:'', venue:'', pres:'', tags:[] } };
+  // setting/protocol tags (everything else is treated as a domain/modality tag)
+  const SETTING = new Set(['Online','Continual','Single-image','Mixed/Non-i.i.d.',
+    'Federated','Black-box','Gradient-free','Open-set','Label-Shift','Adversarial']);
+
+  async function load(){
+    try {
+      const res = await fetch('data.json', { cache:'no-store' });
+      const d = await res.json();
+      A.papers = d.papers || []; A.meta = d.meta || {};
+      // site name + intro come from meta.json (via build.py)
+      if(A.meta.name){ $('site-title').textContent = A.meta.name; document.title = A.meta.name; }
+      if(A.meta.motto){ $('site-motto').textContent = A.meta.motto; }
+      if(A.meta.definition){
+        $('site-def').innerHTML = esc(A.meta.definition)
+          .replace('Test-Time Adaptation (TTA)', '<strong>Test-Time Adaptation (TTA)</strong>');
+      }
+      const n = A.meta.n_papers||A.papers.length;
+      const date = (A.meta.generated_at||'').slice(0,10);
+      $('metaline').innerHTML = (date ? `Last Update: ${date} · ` : '') + `${n} Papers`
+        + ` · Maintainer: <a href="https://zhouz.dev" target="_blank" rel="noopener" class="meta-link">Zhi Zhou</a>`;
+      initFilters(); render(); renderStats();
+    } catch(e){
+      $('p-body').innerHTML = `<tr><td colspan="5" class="text-danger p-4">Failed to load data.json: ${esc(e.message)}</td></tr>`;
+    }
+  }
+
+  function fillSelect(el, opts, cur){
+    el.innerHTML = opts.map(o => `<option value="${esc(o)}"${o===cur?' selected':''}>${esc(o)}</option>`).join('');
+  }
+  function initFilters(){
+    renderTaskOptions();
+    $('p-q').value = A.f.q;
+  }
+  // Task dropdown options with live counts (counted over all OTHER active filters).
+  // Order: (all), then the meta buckets, a divider, then the ML tasks by global size.
+  const TASK_LEAD = ['Benchmark / Survey', 'Theory'];
+  function renderTaskOptions(){
+    const base = A.papers.filter(p => passes(p, new Set(['task'])));
+    const cnt = {}; base.forEach(p => { cnt[p.task]=(cnt[p.task]||0)+1; });
+    const gcnt = {}; A.papers.forEach(p => { gcnt[p.task]=(gcnt[p.task]||0)+1; });
+    const all = uniq(A.papers.map(p=>p.task));
+    const lead = TASK_LEAD.filter(t => all.includes(t));
+    const rest = all.filter(t => !TASK_LEAD.includes(t)).sort((a,b)=> gcnt[b]-gcnt[a] || a.localeCompare(b));
+    const opt = t => `<option value="${esc(t)}"${t===A.f.task?' selected':''}>${esc(t)} (${cnt[t]||0})</option>`;
+    const parts = [`<option value="(all)"${A.f.task==='(all)'?' selected':''}>All (${base.length})</option>`]
+      .concat(lead.map(opt));
+    if(lead.length && rest.length) parts.push('<option disabled>──────────</option>');
+    parts.push(...rest.map(opt));
+    $('p-task').innerHTML = parts.join('');
+  }
+
+  const NONE = new Set();
+  // does paper p pass the active filters, ignoring any dimension named in `skip`?
+  function passes(p, skip){
+    const f = A.f;
+    if(!skip.has('task') && f.task!=='(all)' && p.task!==f.task) return false;
+    if(!skip.has('venue') && f.venue && p.venue_name!==f.venue) return false;
+    if(!skip.has('pres') && f.pres && p.presentation!==f.pres) return false;
+    if(!skip.has('tags') && f.tags.length){ const ts=p.tags||[]; if(!f.tags.every(t=>ts.includes(t))) return false; }
+    if(!skip.has('q') && f.q){ const q=f.q.toLowerCase();
+      const hay = `${p.full||''} ${p.slug||''} ${p.title||''} ${p.authors||''} ${p.venue||''} ${p.task||''}`.toLowerCase();
+      if(!hay.includes(q)) return false; }
+    return true;
+  }
+  function rows(){ return A.papers.filter(p => passes(p, NONE)); }
+
+  function render(){
+    const list = rows(); A.bib = {};
+    $('p-count').textContent = `${list.length} papers`;
+    renderTaskOptions(); renderPalette(); renderChips();
+    if(!list.length){ $('p-body').innerHTML = `<tr><td colspan="5" class="text-secondary text-center p-4">No papers match this filter.</td></tr>`; return; }
+    $('p-body').innerHTML = list.map(p => {
+      A.bib[p.slug] = { title:p.full || p.title, bibtex:p.bibtex };
+      const title = p.url
+        ? `<a class="paper-link" target="_blank" rel="noopener" href="${esc(p.url)}">${esc(p.title)}</a>`
+        : `<span class="fw-medium">${esc(p.title)}</span>`;
+      const tagpills = (p.tags||[]).map(t =>
+        `<a class="pill ${SETTING.has(t)?'pill-setting':'pill-domain'} pill-tag${A.f.tags.includes(t)?' on':''}" href="#" data-tag="${esc(t)}">${esc(t)}</a>`).join(' ');
+      const authors = (p.authors||'').split(/,\s*/).filter(Boolean)
+        .map(a=>`<a class="author-lnk" href="#" data-q="${esc(a)}">${esc(a)}</a>`).join(', ');
+      const vt = p.venue_type==='journal' ? 'pill-journal' : p.venue_type==='conference' ? 'pill-conf' : 'pill-other';
+      const vbadge = p.venue_label ? `<a class="pill ${vt}" href="#" data-venue="${esc(p.venue_name||p.venue_label)}">${esc(p.venue_label)}</a>` : '';
+      const pres = p.presentation==='Oral' ? `<a class="pill pill-oral" href="#" data-pres="Oral">Oral</a>`
+                 : p.presentation==='Spotlight' ? `<a class="pill pill-spotlight" href="#" data-pres="Spotlight">Spotlight</a>` : '';
+      const links = [];
+      if(p.pdf) links.push(`<a class="lnk" target="_blank" rel="noopener" href="${esc(p.pdf)}">📄 PDF</a>`);
+      if(p.bibtex) links.push(`<a class="lnk" href="#" data-bib="${esc(p.slug)}">📑 BibTeX</a>`);
+      if(p.code) links.push(`<a class="lnk" target="_blank" rel="noopener" href="${esc(p.code)}">💻 Code</a>`);
+      return `<tr>
+        <td>
+          ${p.full ? `<span class="fw-semibold">${esc(p.full)}</span>` : '<span class="text-secondary">—</span>'}
+          ${p.task?`<div class="mt-1"><a class="pill pill-gray" href="#" data-rowtask="${esc(p.task)}">${esc(p.task)}</a></div>`:''}
+          ${tagpills?`<div class="row-tags mt-1">${tagpills}</div>`:''}
+        </td>
+        <td>${title}</td>
+        <td class="text-secondary small">${authors}</td>
+        <td class="text-nowrap">${vbadge}${pres?`<div class="mt-1">${pres}</div>`:''}</td>
+        <td class="text-nowrap">${links.join(' <span class="text-secondary">·</span> ')}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderChips(){
+    const f = A.f, chips = [];
+    if(f.venue) chips.push(`<span class="pill pill-conf">Venue: ${esc(f.venue)} <a href="#" data-clear="venue" class="text-decoration-none">✕</a></span>`);
+    if(f.pres)  chips.push(`<span class="pill ${f.pres==='Oral'?'pill-oral':'pill-spotlight'}">${esc(f.pres)} <a href="#" data-clear="pres" class="text-decoration-none">✕</a></span>`);
+    f.tags.forEach(t => chips.push(`<span class="pill ${SETTING.has(t)?'pill-setting':'pill-domain'}">${esc(t)} <a href="#" data-clear-tag="${esc(t)}" class="text-decoration-none">✕</a></span>`));
+    const anyFilter = f.task!=='(all)' || f.q || f.venue || f.pres || f.tags.length;
+    $('p-active').innerHTML = chips.length ? chips.join(' ')
+      : (anyFilter ? '' : '<span class="text-secondary small fst-italic">No filters applied</span>');
+  }
+
+  // tag palette: live counts over the current result set (progressive narrowing);
+  // a tag is shown if it still co-occurs in the current results, or is already selected.
+  function renderPalette(){
+    const base = rows();
+    const cnt = {}; base.forEach(p => (p.tags||[]).forEach(t => cnt[t]=(cnt[t]||0)+1));
+    const all = uniq(A.papers.flatMap(p => p.tags||[]));
+    const show = all.filter(t => (cnt[t]||0)>0 || A.f.tags.includes(t));
+    const order = g => show.filter(t => (SETTING.has(t))===g).sort((a,b)=> (cnt[b]||0)-(cnt[a]||0) || a.localeCompare(b));
+    const pill = t => `<a class="pill ${SETTING.has(t)?'pill-setting':'pill-domain'} pill-tag${A.f.tags.includes(t)?' on':''}" href="#" data-tag="${esc(t)}">${esc(t)} <span class="tag-count">${cnt[t]||0}</span></a>`;
+    const dom = order(false).map(pill).join(' ');
+    const set = order(true).map(pill).join(' ');
+    $('p-tags-palette').innerHTML =
+      `<div class="d-flex flex-wrap align-items-baseline gap-1 mb-1"><span class="tag-grp">Domain</span>${dom || '<span class="text-secondary small">—</span>'}</div>`
+    + `<div class="d-flex flex-wrap align-items-baseline gap-1"><span class="tag-grp">Setting</span>${set || '<span class="text-secondary small">—</span>'}</div>`;
+  }
+  function toggleTag(t){
+    const i = A.f.tags.indexOf(t);
+    if(i<0) A.f.tags.push(t); else A.f.tags.splice(i,1);
+    render();
+  }
+
+  function bars(items, label, val, maxv, opts){
+    opts = opts || {};
+    return items.map(it => {
+      const w = (val(it)/maxv*100).toFixed(1);
+      const da = opts.dataAttr || 'q';
+      const lab = opts.link
+        ? `<a href="#" class="author-lnk text-truncate" data-${da}="${esc(label(it))}" title="${esc(label(it))}" style="width:${opts.lw||150}px;display:inline-block">${esc(label(it))}</a>`
+        : `<span class="mono small text-secondary" style="width:${opts.lw||44}px;text-align:right;display:inline-block">${esc(label(it))}</span>`;
+      return `<div class="d-flex align-items-center gap-2 mb-1">${lab}`
+        + `<div class="bar-bg flex-grow-1"><div class="bar" style="width:${w}%"></div></div>`
+        + `<span class="mono small" style="width:30px">${val(it)}</span></div>`;
+    }).join('');
+  }
+
+  // extend a top-N cutoff so tied entries at the boundary are all kept (entries sorted desc by value)
+  function tieCap(entries, n){
+    if(entries.length <= n) return entries.length;
+    const thresh = entries[n-1][1];
+    let i = n; while(i < entries.length && entries[i][1] === thresh) i++;
+    return i;
+  }
+
+  // a bar list with "show 10 / expand" behaviour; entries = [[label,value],...]
+  function statBlock(elId, key, entries, opts){
+    opts = opts || {}; const defaultN = opts.defaultN || 10;
+    const cap = opts.cap || entries.length;
+    const expanded = A.expand[key];
+    const limit = expanded ? Math.min(cap, entries.length) : Math.min(defaultN, entries.length);
+    const maxv = Math.max(...entries.map(e=>e[1]), 1);
+    let html = bars(entries.slice(0, limit), x=>x[0], x=>x[1], maxv, {link:opts.link, lw:opts.lw, dataAttr:opts.dataAttr});
+    if(entries.length > defaultN){
+      const ec = Math.min(cap, entries.length);
+      html += `<a href="#" class="expand-link small d-inline-block mt-1" data-expand="${key}">`
+        + (expanded ? '▴ Show less' : `▾ Show ${ec}${cap<entries.length?' (top)':''}`) + '</a>';
+    }
+    $(elId).innerHTML = html;
+  }
+
+  function renderStats(){
+    const ps = A.papers;
+    const yc = {}; ps.forEach(p => { if(p.year) yc[p.year]=(yc[p.year]||0)+1; });
+    statBlock('stat-year','year', Object.keys(yc).map(Number).sort((a,b)=>a-b).map(y=>[y,yc[y]]), {defaultN:12});
+    const isArxiv = v => /arxiv|preprint/i.test(v||'');  // arXiv/preprints don't count as published
+    const ac = {}; ps.forEach(p => { if(isArxiv(p.venue)) return;
+      (p.authors||'').split(/,\s*/).filter(Boolean).forEach(a=>{ ac[a]=(ac[a]||0)+1; }); });
+    const aEntries = Object.entries(ac).sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]));
+    statBlock('stat-authors','authors', aEntries,
+      {defaultN:10, cap:tieCap(aEntries,20), link:true, lw:150, dataAttr:'q'});
+    const tc = {}; ps.forEach(p => { if(p.task) tc[p.task]=(tc[p.task]||0)+1; });
+    statBlock('stat-task','task', Object.entries(tc).sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0])),
+      {defaultN:10, link:true, lw:160, dataAttr:'task'});
+    const gc = {}; ps.forEach(p => (p.tags||[]).forEach(t => gc[t]=(gc[t]||0)+1));
+    statBlock('stat-tags','tags', Object.entries(gc).sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0])),
+      {defaultN:10, link:true, lw:150, dataAttr:'tag'});
+    renderVenueYear();
+  }
+
+  function renderVenueYear(){
+    const ps = A.papers, vy={}, vt={}, yset=new Set();
+    ps.forEach(p => { if(!p.year || !p.venue_name) return;
+      yset.add(p.year); (vy[p.venue_name]=vy[p.venue_name]||{}); vy[p.venue_name][p.year]=(vy[p.venue_name][p.year]||0)+1;
+      vt[p.venue_name]=(vt[p.venue_name]||0)+1; });
+    const yrs=[...yset].sort((a,b)=>a-b);
+    const venues = Object.keys(vt).filter(v=>vt[v]>=5).sort((a,b)=> vt[b]-vt[a] || a.localeCompare(b));
+    const expanded=A.expand.vy, defaultN=10;
+    const shown = expanded ? venues : venues.slice(0,defaultN);
+    $('stat-vy-head').innerHTML = `<tr><th>Venue</th>${yrs.map(y=>`<th class="text-center">${y}</th>`).join('')}<th class="text-center">Total</th></tr>`;
+    $('stat-vy-body').innerHTML = shown.map(v => {
+      const cells = yrs.map(y => `<td>${vy[v][y] || '<span class="text-secondary">·</span>'}</td>`).join('');
+      return `<tr><td class="fw-semibold text-nowrap">${esc(v)}</td>${cells}<td class="fw-semibold">${vt[v]}</td></tr>`;
+    }).join('');
+    $('stat-vy-more').innerHTML = venues.length>defaultN
+      ? `<a href="#" class="expand-link small" data-expand="vy">${expanded?'▴ Show less':`▾ Show all (${venues.length})`}</a>` : '';
+  }
+
+  function openBib(slug){ const b=A.bib[slug]; if(!b) return;
+    $('bib-title').textContent = b.title + ' — BibTeX'; $('bib-text').value = b.bibtex;
+    $('bib-overlay').style.display='flex'; setTimeout(()=>{ $('bib-text').focus(); $('bib-text').select(); },30); }
+  function closeBib(){ $('bib-overlay').style.display='none'; }
+  function copyBib(){ const ta=$('bib-text'); ta.focus(); ta.select(); let ok=false;
+    try { ok=document.execCommand('copy'); } catch(e){}
+    if(!ok && navigator.clipboard){ navigator.clipboard.writeText(ta.value).catch(()=>{}); ok=true; }
+    const b=$('bib-copy'),t=b.textContent; b.textContent=ok?'Copied!':'Select & ⌘/Ctrl+C'; setTimeout(()=>{b.textContent=t;},1500); }
+
+  $('p-task').addEventListener('change',e=>{A.f.task=e.target.value; render();});
+  $('p-q').addEventListener('input',e=>{A.f.q=e.target.value; render();});
+  $('p-reset').addEventListener('click',()=>{A.f={task:'(all)',q:'',venue:'',pres:'',tags:[]}; initFilters(); render();});
+  // tag palette clicks
+  $('p-tags-palette').addEventListener('click',e=>{
+    const t=e.target.closest('a[data-tag]'); if(!t) return; e.preventDefault(); toggleTag(t.dataset.tag);
+  });
+  // composable filters: badge clicks set their own dimension and KEEP the others
+  $('p-body').addEventListener('click',e=>{
+    const bib=e.target.closest('a[data-bib]'); if(bib){ e.preventDefault(); openBib(bib.dataset.bib); return; }
+    const top = () => window.scrollTo({top:0,behavior:'smooth'});
+    const tg=e.target.closest('a[data-tag]');
+    if(tg){ e.preventDefault(); toggleTag(tg.dataset.tag); top(); return; }
+    const rt=e.target.closest('a[data-rowtask]');
+    if(rt){ e.preventDefault(); A.f.task=rt.dataset.rowtask; render(); top(); return; }
+    const ve=e.target.closest('a[data-venue]');
+    if(ve){ e.preventDefault(); A.f.venue=ve.dataset.venue; render(); top(); return; }
+    const pr=e.target.closest('a[data-pres]');
+    if(pr){ e.preventDefault(); A.f.pres=pr.dataset.pres; render(); top(); return; }
+    const q=e.target.closest('a[data-q]');
+    if(q){ e.preventDefault(); A.f.q=q.dataset.q; $('p-q').value=q.dataset.q; render(); top(); }
+  });
+  // remove an individual active-filter chip
+  $('p-active').addEventListener('click',e=>{
+    const ct=e.target.closest('a[data-clear-tag]');
+    if(ct){ e.preventDefault(); A.f.tags=A.f.tags.filter(t=>t!==ct.dataset.clearTag); render(); return; }
+    const c=e.target.closest('a[data-clear]'); if(!c) return;
+    e.preventDefault(); A.f[c.dataset.clear]=''; render();
+  });
+  // tab switching
+  const TAB_NAMES = ['list','stats','about'];
+  function showTab(t){
+    document.querySelectorAll('#tabs .nav-link').forEach(x=>x.classList.toggle('active', x.dataset.tab===t));
+    TAB_NAMES.forEach(name => $('tab-'+name).classList.toggle('d-none', name!==t));
+  }
+  document.querySelectorAll('#tabs .nav-link').forEach(a=>a.addEventListener('click',()=>showTab(a.dataset.tab)));
+  // click an author in the Stats tab -> jump to Paper List filtered by that author
+  $('stat-authors').addEventListener('click',e=>{
+    const a=e.target.closest('a[data-q]'); if(!a) return; e.preventDefault();
+    A.f={task:'(all)', q:a.dataset.q, venue:'', pres:'', tags:[]}; initFilters(); render();
+    showTab('list'); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  // click a task bar -> filter list by that task
+  $('stat-task').addEventListener('click',e=>{
+    const a=e.target.closest('a[data-task]'); if(!a) return; e.preventDefault();
+    A.f={task:a.dataset.task, q:'', venue:'', pres:'', tags:[]}; initFilters(); render();
+    showTab('list'); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  // click a tag bar -> filter list by that tag
+  $('stat-tags').addEventListener('click',e=>{
+    const a=e.target.closest('a[data-tag]'); if(!a) return; e.preventDefault();
+    A.f={task:'(all)', q:'', venue:'', pres:'', tags:[a.dataset.tag]}; initFilters(); render();
+    showTab('list'); window.scrollTo({top:0,behavior:'smooth'});
+  });
+  // expand / collapse a stats block
+  $('tab-stats').addEventListener('click',e=>{
+    const ex=e.target.closest('a[data-expand]'); if(!ex) return; e.preventDefault();
+    A.expand[ex.dataset.expand] = !A.expand[ex.dataset.expand]; renderStats();
+  });
+  $('bib-close').addEventListener('click',closeBib);
+  $('bib-copy').addEventListener('click',copyBib);
+  $('bib-overlay').addEventListener('click',e=>{ if(e.target===$('bib-overlay')) closeBib(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeBib(); });
+
+  load();
+})();
+</script>
+</body>
+</html>
