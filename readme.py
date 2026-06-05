@@ -11,8 +11,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-REPO = "https://github.com/Test-Time-Learning/Awesome-Test-Time-Adaptation"
-SITE = "https://test-time.cc/tta"
+REPO = "https://github.com/Test-Time-Learning/adaptation"
+SITE = "https://test-time.cc/adaptation/"
 MAINTAINER = ("Zhi Zhou", "https://zhouz.dev")
 
 # Task display order: ML problems first, then the two meta buckets last.

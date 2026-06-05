@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Update-2026--06--05-c2902f" alt="Last Update">
 </p>
 
-A curated, task-organized reading list of **465** Test-Time Adaptation (Training) papers. Each entry is filed under one **Task** (the ML problem) and tagged with its **Domain** and **Setting**. An interactive, filterable version of this list is available on the [project website](https://test-time.cc/tta).
+A curated, task-organized reading list of **465** Test-Time Adaptation (Training) papers. Each entry is filed under one **Task** (the ML problem) and tagged with its **Domain** and **Setting**. An interactive, filterable version of this list is available on the [project website](https://test-time.cc/adaptation/).
 
 Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Contributing](#contributing).
 
@@ -551,7 +551,7 @@ Spotted a missing paper or an error? Pull requests are welcome. There are two wa
 
 ### Option A: with Claude Code (recommended)
 
-The repo ships an [`add-paper` skill](https://github.com/Test-Time-Learning/Awesome-Test-Time-Adaptation/tree/main/.claude/skills/add-paper) for Claude Code. Open the repo in Claude Code and just say, for example, *"add this paper: an arXiv link, a conference page, or simply the paper's title"*. Given only a title, the skill searches for the paper itself. It then reads the abstract, decides the Task and the Domain/Setting tags, writes the BibTeX, checks for duplicates, appends the entry to `papers.json`, and regenerates `data.json` and `README.md`. You just review the diff and open a PR.
+The repo ships an [`add-paper` skill](https://github.com/Test-Time-Learning/adaptation/tree/main/.claude/skills/add-paper) for Claude Code. Open the repo in Claude Code and just say, for example, *"add this paper: an arXiv link, a conference page, or simply the paper's title"*. Given only a title, the skill searches for the paper itself. It then reads the abstract, decides the Task and the Domain/Setting tags, writes the BibTeX, checks for duplicates, appends the entry to `papers.json`, and regenerates `data.json` and `README.md`. You just review the diff and open a PR.
 
 ### Option B: by hand
 
