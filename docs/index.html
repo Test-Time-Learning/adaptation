@@ -591,10 +591,16 @@
   // tab switching
   const TAB_NAMES = ['list','stats','about'];
   function showTab(t){
+    if(!TAB_NAMES.includes(t)) t='list';
     document.querySelectorAll('#tabs .nav-link').forEach(x=>x.classList.toggle('active', x.dataset.tab===t));
     TAB_NAMES.forEach(name => $('tab-'+name).classList.toggle('d-none', name!==t));
+    if(history.replaceState) history.replaceState(null,'','#'+t);
   }
   document.querySelectorAll('#tabs .nav-link').forEach(a=>a.addEventListener('click',()=>showTab(a.dataset.tab)));
+  // deep-linking: honour #list / #stats / #about from the URL (e.g. links from
+  // the Leaderboard site) on load and on hash change, so the nav feels unified.
+  window.addEventListener('hashchange',()=>showTab(location.hash.slice(1)));
+  if(location.hash.slice(1)) showTab(location.hash.slice(1));
   // click an author in the Stats tab -> jump to Paper List filtered by that author
   $('stat-authors').addEventListener('click',e=>{
     const a=e.target.closest('a[data-q]'); if(!a) return; e.preventDefault();
