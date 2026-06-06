@@ -538,7 +538,7 @@
       yset.add(p.year); (vy[p.venue_name]=vy[p.venue_name]||{}); vy[p.venue_name][p.year]=(vy[p.venue_name][p.year]||0)+1;
       vt[p.venue_name]=(vt[p.venue_name]||0)+1; });
     const yrs=[...yset].sort((a,b)=>a-b);
-    const venues = Object.keys(vt).filter(v=>vt[v]>=5).sort((a,b)=> vt[b]-vt[a] || a.localeCompare(b));
+    const venues = Object.keys(vt).filter(v=>vt[v]>=5 && v!=='arXiv').sort((a,b)=> vt[b]-vt[a] || a.localeCompare(b));
     const expanded=A.expand.vy, defaultN=10;
     const shown = expanded ? venues : venues.slice(0,defaultN);
     $('stat-vy-head').innerHTML = `<tr><th>Venue</th>${yrs.map(y=>`<th class="text-center">${y}</th>`).join('')}<th class="text-center">Total</th></tr>`;
