@@ -20,7 +20,8 @@ ROOT = Path(__file__).resolve().parent
 _JOURNAL = ("tmlr", "ijcv", "jmlr", "tpami", "pami", "pattern recognition", "journal of",
             "transactions", "tmi", "media", "tip", "tnnls", "imwut", "scientific reports",
             "expert systems", "isprs", "photogrammetry", "remote sensing",
-            "eswa", "jprs", "sci. rep", "j. softw", "jos", "jag", "tcsvt", "tmm", "tcss")
+            "eswa", "jprs", "sci. rep", "j. softw", "jos", "jag", "tcsvt", "tmm", "tcss",
+            "nature communications", "nature commun")
 _CONF = ("iclr", "neurips", "icml", "cvpr", "iccv", "eccv", "aaai", "wacv", "aistats",
          "bmvc", "ijcai", "acl", "emnlp", "naacl", "kdd", "3dv", "icra", "miccai", "iros",
          "interspeech", "asru", "icassp", "wsdm", "www", "mm", "bci", "icdar",
@@ -37,6 +38,7 @@ def classify_venue(venue: str):
     v = venue or ""
     low = v.lower()
     label = re.sub(r"\s*\((oral|spotlight|notable[^)]*)\)", "", v, flags=re.I).strip()
+    label = re.sub(r"\bCommunications\b", "Comm.", label)
     name = re.sub(r"\b\d{4}\b.*$", "", label).replace("Workshop", "").strip(" ,")
     if "workshop" in low or "arxiv" in low or "preprint" in low:
         vtype = "other"
