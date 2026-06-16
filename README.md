@@ -6,7 +6,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Papers-465-13b3a8" alt="Papers">
-  <img src="https://img.shields.io/badge/Last%20Update-2026--06--05-c2902f" alt="Last Update">
+  <img src="https://img.shields.io/badge/Last%20Update-2026--06--16-c2902f" alt="Last Update">
 </p>
 
 A curated, task-organized reading list of **465** Test-Time Adaptation (Training) papers. Each entry is filed under one **Task** (the ML problem) and tagged with its **Domain** and **Setting**. An interactive, filterable version of this list is available on the [project website](https://test-time.cc/adaptation/).
@@ -21,14 +21,14 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 
 - [Benchmark / Survey](#benchmark-survey) (13)
 - [Theory](#theory) (7)
-- [Classification](#classification) (308)
+- [Classification](#classification) (306)
 - [Segmentation](#segmentation) (45)
 - [Detection](#detection) (15)
-- [Regression](#regression) (25)
+- [Regression](#regression) (27)
 - [Restoration](#restoration) (13)
-- [Retrieval & Ranking](#retrieval-ranking) (7)
+- [Retrieval & Ranking](#retrieval-ranking) (4)
 - [Sequence & Language](#sequence-language) (27)
-- [Decision-Making](#decision-making) (5)
+- [Decision-Making](#decision-making) (8)
 
 ## Benchmark / Survey
 
@@ -234,7 +234,6 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 | **GTTA** | [Introducing Intermediate Domains for Effective Self-Training during Test-Time](https://arxiv.org/abs/2208.07736) | IJCNN 2024 | [PDF](https://arxiv.org/pdf/2208.07736) · [Code](https://github.com/mariodoebler/test-time-adaptation) |
 | **HILTTA** | [Exploring Human-in-the-Loop Test-Time Adaptation by Synergizing Active Learning and Model Selection](https://arxiv.org/abs/2405.18911) | TMLR 2024 | [PDF](https://arxiv.org/pdf/2405.18911) |
 | **HisTPT** | [Historical Test-time Prompt Tuning for Vision Foundation Models](https://arxiv.org/abs/2410.20346) | NeurIPS 2024 | [PDF](https://arxiv.org/pdf/2410.20346) |
-| **HoCoTTA** | [Human Motion Forecasting in Dynamic Domain Shifts: A Homeostatic Continual Test-Time Adaptation Framework](https://link.springer.com/chapter/10.1007/978-3-031-72933-1_25) | ECCV 2024 | [PDF](https://link.springer.com/chapter/10.1007/978-3-031-72933-1_25) |
 | **HomoTTT** | [A Fully Test-Time Training Framework for Semi-Supervised Node Classification on Out-of-Distribution Graphs](https://dl.acm.org/doi/10.1145/3649507) | ACM TKDD 2024 |  |
 | **IG-Defense** | [Interpretability-Guided Test-Time Adversarial Defense](https://arxiv.org/abs/2409.15190) | ECCV 2024 | [PDF](https://arxiv.org/pdf/2409.15190) |
 | **IST** | [Improved Self-Training for Test-Time Adaptation](https://openaccess.thecvf.com/content/CVPR2024/html/Ma_Improved_Self-Training_for_Test-Time_Adaptation_CVPR_2024_paper.html) | CVPR 2024 | [PDF](https://openaccess.thecvf.com/content/CVPR2024/papers/Ma_Improved_Self-Training_for_Test-Time_Adaptation_CVPR_2024_paper.pdf) |
@@ -330,7 +329,6 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 | **CFA-ViT** | [Robustifying Vision Transformer without Retraining from Scratch by Test-Time Class-Conditional Feature Alignment](https://www.ijcai.org/proceedings/2022/141) | IJCAI 2022 | [PDF](https://arxiv.org/pdf/2206.13951) · [Code](https://github.com/kojima-takeshi188/CFA) |
 | **Conjugate PL** | [Test-Time Adaptation via Conjugate Pseudo-labels](https://arxiv.org/abs/2207.09640) | NeurIPS 2022 | [PDF](https://arxiv.org/pdf/2207.09640) · [Code](https://github.com/locuslab/tta_conjugate) |
 | **CoTTA** | [Continual Test-Time Domain Adaptation](https://arxiv.org/abs/2203.13591) | CVPR 2022 | [PDF](https://arxiv.org/pdf/2203.13591) · [Code](https://github.com/qinenergy/cotta) |
-| **DiffPure** | [Diffusion Models for Adversarial Purification](https://proceedings.mlr.press/v162/nie22a.html) | ICML 2022 | [PDF](https://arxiv.org/pdf/2205.07460) · [Code](https://github.com/NVlabs/DiffPure) |
 | **DUA** | [The Norm Must Go On: Dynamic Unsupervised Domain Adaptation by Normalization](https://arxiv.org/abs/2112.00463) | CVPR 2022 | [PDF](https://arxiv.org/pdf/2112.00463) · [Code](https://github.com/jmiemirza/DUA) |
 | **EATA** | [Efficient Test-Time Model Adaptation without Forgetting](https://arxiv.org/abs/2204.02610) | ICML 2022 (Spotlight) | [PDF](https://arxiv.org/pdf/2204.02610) · [Code](https://github.com/mr-eggplant/EATA) |
 | **Ev-TTA** | [Ev-TTA: Test-Time Adaptation for Event-Based Object Recognition](https://openaccess.thecvf.com/content/CVPR2022/html/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.html) | CVPR 2022 | [PDF](https://openaccess.thecvf.com/content/CVPR2022/papers/Kim_Ev-TTA_Test-Time_Adaptation_for_Event-Based_Object_Recognition_CVPR_2022_paper.pdf) · [Code](https://github.com/82magnolia/ev_tta) |
@@ -460,8 +458,10 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 | **RobIA** | [RobIA: Robust Instance-aware Continual Test-time Adaptation for Deep Stereo](https://arxiv.org/abs/2511.10107) | NeurIPS 2025 | [PDF](https://arxiv.org/pdf/2511.10107) |
 | **SA-3DPose** | [Semantics-aware Test-time Adaptation for 3D Human Pose Estimation](https://arxiv.org/abs/2502.10724) | ICML 2025 | [PDF](https://arxiv.org/pdf/2502.10724) |
 | **TAFAS** | [Battling the Non-stationarity in Time Series Forecasting via Test-time Adaptation](https://arxiv.org/abs/2501.04970) | AAAI 2025 | [PDF](https://arxiv.org/pdf/2501.04970) · [Code](https://github.com/kimanki/TAFAS) |
+| **TAIP** | [Online test-time adaptation for better generalization of interatomic potentials to out-of-distribution data](https://www.nature.com/articles/s41467-025-57101-4) | Nature Communications 2025 | [PDF](https://www.nature.com/articles/s41467-025-57101-4.pdf) · [Code](https://github.com/TaoyongCui/TAIP-codes) |
 | **TTPT** | [Test-Time Prompt Tuning for Zero-Shot Depth Completion](https://openaccess.thecvf.com/content/ICCV2025/html/Jeong_Test-Time_Prompt_Tuning_for_Zero-Shot_Depth_Completion_ICCV_2025_paper.html) | ICCV 2025 | [PDF](https://openaccess.thecvf.com/content/ICCV2025/papers/Jeong_Test-Time_Prompt_Tuning_for_Zero-Shot_Depth_Completion_ICCV_2025_paper.pdf) |
 | **Bi-TTA** | [Bi-TTA: Bidirectional Test-Time Adapter for Remote Physiological Measurement](https://arxiv.org/abs/2409.17316) | ECCV 2024 | [PDF](https://arxiv.org/pdf/2409.17316) |
+| **HoCoTTA** | [Human Motion Forecasting in Dynamic Domain Shifts: A Homeostatic Continual Test-Time Adaptation Framework](https://link.springer.com/chapter/10.1007/978-3-031-72933-1_25) | ECCV 2024 | [PDF](https://link.springer.com/chapter/10.1007/978-3-031-72933-1_25) |
 | **TPGaze** | [Test-Time Personalization with Meta Prompt for Gaze Estimation](https://arxiv.org/abs/2401.01577) | AAAI 2024 | [PDF](https://arxiv.org/pdf/2401.01577) · [Code](https://github.com/hmarkamcan/TPGaze) |
 | **TTT-Forecast** | [Test Time Learning for Time Series Forecasting](https://arxiv.org/abs/2409.14012) | arXiv 2024 | [PDF](https://arxiv.org/pdf/2409.14012) |
 | **CycleAdapt** | [Cyclic Test-Time Adaptation on Monocular Video for 3D Human Mesh Reconstruction](https://arxiv.org/abs/2308.06554) | ICCV 2023 | [PDF](https://arxiv.org/pdf/2308.06554) · [Code](https://github.com/hygenie1228/CycleAdapt_RELEASE) |
@@ -496,10 +496,7 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 | Name | Paper | Venue | Links |
 |---|---|---|---|
 | **DART3** | [DART3: Leveraging Distance for Test Time Adaptation in Person Re-Identification](https://arxiv.org/abs/2505.18337) | arXiv 2025 | [PDF](https://arxiv.org/pdf/2505.18337) |
-| **MATT-CTR** | [MATT-CTR: Unleashing a Model-Agnostic Test-Time Paradigm for CTR Prediction with Confidence-Guided Inference Paths](https://arxiv.org/abs/2510.08932) | arXiv 2025 | [PDF](https://arxiv.org/pdf/2510.08932) |
-| **T2ARec** | [Test-Time Alignment for Tracking User Interest Shifts in Sequential Recommendation](https://arxiv.org/abs/2504.01489) | RecSys 2025 | [PDF](https://arxiv.org/pdf/2504.01489) |
 | **TCR** | [Test-time Adaptation for Cross-modal Retrieval with Query Shift](https://openreview.net/forum?id=BmG88rONaU) | ICLR 2025 | [PDF](https://openreview.net/pdf?id=BmG88rONaU) |
-| **TTA-GREC** | [Test-Time Adaptation on Recommender System with Data-Centric Graph Transformation](https://www.ijcai.org/proceedings/2025/510) | IJCAI 2025 | [PDF](https://www.ijcai.org/proceedings/2025/0510.pdf) |
 | **TTA-TBPS** | [Test-Time Adaptation for Text-Based Person Search](https://dl.acm.org/doi/10.1145/3746027.3754946) | ACM MM 2025 |  |
 | **BNTA** | [Generalizable Person Re-Identification via Self-Supervised Batch Norm Test-Time Adaption](https://ojs.aaai.org/index.php/AAAI/article/view/19963) | AAAI 2022 | [PDF](https://cdn.aaai.org/ojs/19963/19963-13-23976-1-2-20220628.pdf) |
 
@@ -540,7 +537,10 @@ Maintained by [Zhi Zhou](https://zhouz.dev). Contributions are welcome; see [Con
 | Name | Paper | Venue | Links |
 |---|---|---|---|
 | **FeedTTA** | [Test-Time Adaptation for Online Vision-Language Navigation with Feedback-based Reinforcement Learning](https://proceedings.mlr.press/v267/kim25ad.html) | ICML 2025 | [PDF](https://proceedings.mlr.press/v267/kim25ad/kim25ad.pdf) |
+| **MATT-CTR** | [MATT-CTR: Unleashing a Model-Agnostic Test-Time Paradigm for CTR Prediction with Confidence-Guided Inference Paths](https://arxiv.org/abs/2510.08932) | arXiv 2025 | [PDF](https://arxiv.org/pdf/2510.08932) |
+| **T2ARec** | [Test-Time Alignment for Tracking User Interest Shifts in Sequential Recommendation](https://arxiv.org/abs/2504.01489) | RecSys 2025 | [PDF](https://arxiv.org/pdf/2504.01489) |
 | **TT-RL** | [Test-time Adapted Reinforcement Learning with Action Entropy Regularization](https://proceedings.mlr.press/v267/xu25ar.html) | ICML 2025 | [PDF](https://proceedings.mlr.press/v267/xu25ar/xu25ar.pdf) |
+| **TTA-GREC** | [Test-Time Adaptation on Recommender System with Data-Centric Graph Transformation](https://www.ijcai.org/proceedings/2025/510) | IJCAI 2025 | [PDF](https://www.ijcai.org/proceedings/2025/0510.pdf) |
 | **WMI** | [World Model Implanting for Test-time Adaptation of Embodied Agents](https://proceedings.mlr.press/v267/yoo25a.html) | ICML 2025 | [PDF](https://proceedings.mlr.press/v267/yoo25a/yoo25a.pdf) |
 | **FSTTA** | [Fast-Slow Test-Time Adaptation for Online Vision-and-Language Navigation](https://arxiv.org/abs/2311.13209) | ICML 2024 | [PDF](https://arxiv.org/pdf/2311.13209) · [Code](https://github.com/Feliciaxyao/ICML2024-FSTTA) |
 | **PAD** | [Self-Supervised Policy Adaptation during Deployment](https://arxiv.org/abs/2007.04309) | ICLR 2021 | [PDF](https://arxiv.org/pdf/2007.04309) · [Code](https://github.com/nicklashansen/policy-adaptation-during-deployment) |
@@ -561,4 +561,4 @@ The repo ships an [`add-paper` skill](https://github.com/Test-Time-Learning/adap
 
 ---
 
-<sub>This README is auto-generated by `readme.py` from `papers.json`. Last update: 2026-06-05. Page designed by [Zhi Zhou](https://zhouz.dev).</sub>
+<sub>This README is auto-generated by `readme.py` from `papers.json`. Last update: 2026-06-16. Page designed by [Zhi Zhou](https://zhouz.dev).</sub>

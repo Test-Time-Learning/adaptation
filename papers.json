@@ -570,7 +570,7 @@
     "code": "https://github.com/Cascol-Chen/COLA",
     "bibtex": "@inproceedings{chen2024cola,\n  title={Cross-Device Collaborative Test-Time Adaptation},\n  author={Chen, Guohao and Niu, Shuaicheng and Chen, Deyu and Zhang, Shuhai and Li, Changsheng and Li, Yuanqing and Tan, Mingkui},\n  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},\n  year={2024}\n}",
     "presentation": null,
-    "task_fine": "Image Classification",
+    "task_fine": "Federated TTA",
     "tags": [
       "Image",
       "Federated"
@@ -759,25 +759,6 @@
       "Image",
       "Online",
       "Mixed/Non-i.i.d."
-    ]
-  },
-  {
-    "slug": "diffpure_adv_tta",
-    "full": "DiffPure",
-    "title": "Diffusion Models for Adversarial Purification",
-    "authors": "Weili Nie, Brandon Guo, Yujia Huang, Chaowei Xiao, Arash Vahdat, Anima Anandkumar",
-    "venue": "ICML 2022",
-    "task": "Classification",
-    "url": "https://proceedings.mlr.press/v162/nie22a.html",
-    "pdf": "https://arxiv.org/pdf/2205.07460",
-    "code": "https://github.com/NVlabs/DiffPure",
-    "bibtex": "@inproceedings{nie2022diffusion,\n  title={Diffusion Models for Adversarial Purification},\n  author={Nie, Weili and Guo, Brandon and Huang, Yujia and Xiao, Chaowei and Vahdat, Arash and Anandkumar, Anima},\n  booktitle={Proceedings of the 39th International Conference on Machine Learning (ICML)},\n  year={2022}\n}",
-    "presentation": null,
-    "task_fine": "Image Classification",
-    "tags": [
-      "Image",
-      "Single-image",
-      "Adversarial"
     ]
   },
   {
@@ -1811,7 +1792,7 @@
     "title": "MATT-CTR: Unleashing a Model-Agnostic Test-Time Paradigm for CTR Prediction with Confidence-Guided Inference Paths",
     "authors": "Moyu Zhang, Yun Chen, Yujun Jin, Jinxin Hu, Yu Zhang, Xiaoyi Zeng",
     "venue": "arXiv 2025",
-    "task": "Retrieval & Ranking",
+    "task": "Decision-Making",
     "url": "https://arxiv.org/abs/2510.08932",
     "pdf": "https://arxiv.org/pdf/2510.08932",
     "code": null,
@@ -4265,7 +4246,7 @@
     "title": "Test-Time Adaptation on Recommender System with Data-Centric Graph Transformation",
     "authors": "Yating Liu, Xin Zheng, Yi Li, Yanqing Guo",
     "venue": "IJCAI 2025",
-    "task": "Retrieval & Ranking",
+    "task": "Decision-Making",
     "url": "https://www.ijcai.org/proceedings/2025/510",
     "pdf": "https://www.ijcai.org/proceedings/2025/0510.pdf",
     "code": "",
@@ -4283,7 +4264,7 @@
     "title": "Test-Time Alignment for Tracking User Interest Shifts in Sequential Recommendation",
     "authors": "Changshuo Zhang, Xiao Zhang, Teng Shi, Jun Xu, Ji-Rong Wen",
     "venue": "RecSys 2025",
-    "task": "Retrieval & Ranking",
+    "task": "Decision-Making",
     "url": "https://arxiv.org/abs/2504.01489",
     "pdf": "https://arxiv.org/pdf/2504.01489",
     "code": "",
@@ -7638,8 +7619,8 @@
     "title": "Human Motion Forecasting in Dynamic Domain Shifts: A Homeostatic Continual Test-Time Adaptation Framework",
     "authors": "Qiongjie Cui, Huaijiang Sun, Weiqing Li, Jianfeng Lu, Bin Li",
     "venue": "ECCV 2024",
-    "task": "Classification",
-    "task_fine": "Activity Recognition",
+    "task": "Regression",
+    "task_fine": "Time-Series Forecasting",
     "tags": [
       "Time-Series",
       "Video",
@@ -8409,6 +8390,24 @@
     "pdf": "https://arxiv.org/pdf/2605.28057",
     "code": "",
     "bibtex": "@inproceedings{zhou2026learnability, title={On the Learnability of Test-Time Adaptation: A Recovery Complexity Perspective}, author={Zhou, Zhi and Yang, Ming and Tian, Shi-Yu and Yu, Kun-Yang and Guo, Lan-Zhe and Li, Yu-Feng}, booktitle={International Conference on Machine Learning (ICML)}, year={2026} }",
+    "presentation": ""
+  },
+  {
+    "slug": "taip",
+    "full": "TAIP",
+    "title": "Online test-time adaptation for better generalization of interatomic potentials to out-of-distribution data",
+    "authors": "Taoyong Cui, Chenyu Tang, Dongzhan Zhou, Yuqiang Li, Xingao Gong, Wanli Ouyang, Mao Su, Shufei Zhang",
+    "venue": "Nature Communications 2025",
+    "task": "Regression",
+    "task_fine": "Regression",
+    "tags": [
+      "Molecular",
+      "Online"
+    ],
+    "url": "https://www.nature.com/articles/s41467-025-57101-4",
+    "pdf": "https://www.nature.com/articles/s41467-025-57101-4.pdf",
+    "code": "https://github.com/TaoyongCui/TAIP-codes",
+    "bibtex": "@article{cui2025online, title={Online test-time adaptation for better generalization of interatomic potentials to out-of-distribution data}, author={Cui, Taoyong and Tang, Chenyu and Zhou, Dongzhan and Li, Yuqiang and Gong, Xingao and Ouyang, Wanli and Su, Mao and Zhang, Shufei}, journal={Nature Communications}, volume={16}, number={1}, pages={1891}, year={2025}, publisher={Nature Publishing Group} }",
     "presentation": ""
   }
 ]
