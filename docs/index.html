@@ -354,7 +354,7 @@
       const d = await res.json();
       A.papers = d.papers || []; A.meta = d.meta || {};
       // site name + intro come from meta.json (via build.py)
-      if(A.meta.name){ $('site-title').textContent = A.meta.name; document.title = A.meta.name; }
+      if(A.meta.name){ $('site-title').textContent = '📚 ' + A.meta.name; document.title = A.meta.name; }
       if(A.meta.motto){ $('site-motto').textContent = A.meta.motto; }
       if(A.meta.definition){
         $('site-def').innerHTML = esc(A.meta.definition)

@@ -1,5 +1,5 @@
 {
-  "name": "📚 Awesome Test-Time Adaptation",
+  "name": "Awesome Test-Time Adaptation",
   "motto": "The world keeps changing, so should the model.",
   "definition": "Test-Time Adaptation (TTA) lets a trained model adapt to that shift at inference, learning on the fly from the unlabeled test data alone."
 }
