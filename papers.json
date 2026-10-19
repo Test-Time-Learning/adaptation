@@ -8409,5 +8409,23 @@
     "code": "https://github.com/TaoyongCui/TAIP-codes",
     "bibtex": "@article{cui2025online, title={Online test-time adaptation for better generalization of interatomic potentials to out-of-distribution data}, author={Cui, Taoyong and Tang, Chenyu and Zhou, Dongzhan and Li, Yuqiang and Gong, Xingao and Ouyang, Wanli and Su, Mao and Zhang, Shufei}, journal={Nature Communications}, volume={16}, number={1}, pages={1891}, year={2025}, publisher={Nature Publishing Group} }",
     "presentation": ""
+  },
+  {
+    "slug": "deep-edge-filter",
+    "full": "Deep Edge Filter",
+    "title": "Deep Edge Filter: Return of the Human-Crafted Layer in Deep Learning",
+    "authors": "Dongkwan Lee, Junhoo Lee, Nojun Kwak",
+    "venue": "NeurIPS 2025",
+    "task": "Classification",
+    "tags": [
+      "Image",
+      "Online"
+    ],
+    "task_fine": "Image Classification",
+    "url": "https://arxiv.org/abs/2510.13865",
+    "pdf": "https://arxiv.org/pdf/2510.13865",
+    "code": "https://github.com/dongkwani/DeepEdgeFilter",
+    "bibtex": "@inproceedings{lee2025deep,\n  title={Deep Edge Filter: Return of the Human-Crafted Layer in Deep Learning},\n  author={Lee, Dongkwan and Lee, Junhoo and Kwak, Nojun},\n  booktitle={Advances in Neural Information Processing Systems},\n  year={2025}\n}",
+    "presentation": null
   }
 ]
