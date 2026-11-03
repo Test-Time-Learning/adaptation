@@ -8409,5 +8409,23 @@
     "code": "https://github.com/TaoyongCui/TAIP-codes",
     "bibtex": "@article{cui2025online, title={Online test-time adaptation for better generalization of interatomic potentials to out-of-distribution data}, author={Cui, Taoyong and Tang, Chenyu and Zhou, Dongzhan and Li, Yuqiang and Gong, Xingao and Ouyang, Wanli and Su, Mao and Zhang, Shufei}, journal={Nature Communications}, volume={16}, number={1}, pages={1891}, year={2025}, publisher={Nature Publishing Group} }",
     "presentation": ""
+  },
+  {
+    "slug": "simit",
+    "full": "SIMIT",
+    "title": "SIMIT: Self-Improving Vision-Language Models via Imagination at Test-Time",
+    "authors": "Mehmet Onurcan Kaya, Desmond Elliott, Dim P. Papadopoulos",
+    "venue": "arXiv 2026",
+    "task": "Sequence & Language",
+    "task_fine": "Sequence & Language",
+    "tags": [
+      "Vision-Language",
+      "Single-image"
+    ],
+    "url": "https://arxiv.org/abs/2611.00053",
+    "pdf": "https://arxiv.org/pdf/2611.00053",
+    "code": "https://github.com/monurcan/simit_paper",
+    "bibtex": "@article{kaya2026simit,\n  title={{SIMIT}: Self-Improving Vision-Language Models via Imagination at Test-Time},\n  author={Kaya, Mehmet Onurcan and Elliott, Desmond and Papadopoulos, Dim P.},\n  journal={arXiv preprint arXiv:2611.00053},\n  year={2026}\n}",
+    "presentation": ""
   }
 ]
